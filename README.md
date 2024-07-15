@@ -18,7 +18,8 @@ Right now the class cointains 3 methods:
 
 For machine learning model part I assumed that only variables with prefix `latest_forecasted_*` are available when forecast for carbon intensity is made for future. This is how the distribution of missing values looks like.
 
-#   Column                                         Non-Null Count  Dtype  
+```
+Column                                         Non-Null Count  Dtype  
 ---  ------                                         --------------  -----  
  0   latest_forecasted_dewpoint_avg                 25235 non-null  float64
  1   latest_forecasted_precipitation_avg            24901 non-null  float64
@@ -35,5 +36,6 @@ For machine learning model part I assumed that only variables with prefix `lates
  12  latest_forecasted_power_net_import_SE-SE4_avg  41770 non-null  float64
  13  latest_forecasted_production_solar_avg         41301 non-null  float64
  14  latest_forecasted_production_wind_avg          41301 non-null  float64
+```
 
 The column `latest_forecasted_power_net_import_SE_avg` can be since there are no values at all.
