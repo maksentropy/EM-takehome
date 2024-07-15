@@ -11,10 +11,12 @@ Right now the class cointains 3 methods:
 
 
 `data_processing.py` script containts a class wrapper for a data class. `DataProcesser` extends functionality of `pandas` library with two methods:
-- `retreive_data` for reading data. Right now it reads data from a CSV file but it can be extended to get data from a database or API endpoint.
+- `read_data` for reading data. Right now it reads data from a CSV file but it can be extended to get data from a database or API endpoint.
+- `get_columns_as_np` returns specified columns of pandas DataFrame.
+- `dropna_columns` drops rows if in a specified column there is NaN.
 - `fill_na` is for dealing with missing values. It implements filling missed numerical data with median.
 
-`predictions.py` scipt trains the model and retunrs predictions. 
+`predictions.py` scipt trains the model and retunrs predictions. All parameters are in `config.yaml` file so changing features and targets can be done outside of script.
 
 For machine learning model part I assumed that only variables with prefix `latest_forecasted_*` are available when forecast for carbon intensity is made for future. This is how the distribution of missing values looks like.
 
@@ -60,4 +62,11 @@ However, sklearn's implementation of gradient boosting has property of showing f
 | Gradient boosting | 49.3276 |
 | Gradient boosting (selected features) | 41.16141 |
 
-Gradient boosting with selected features is used in the ML pipeline in this repo. 
+Gradient boosting with selected features is used in the ML pipeline in this repo. For the sake of completenes, metrics for models trained only on these features are given in the table below:
+
+| Model | MAE |
+| --- | --- |
+| Baseline (mean) | 114.9660 |
+| Ridge regression (selected features) | 46.5278 |
+| Lasso regression (selected features) | 46.7344 |
+| Gradient boosting (selected features) | 38.2397 |
