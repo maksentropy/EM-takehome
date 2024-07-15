@@ -1,0 +1,13 @@
+features : [
+  'latest_forecasted_production_avg',
+  'latest_forecasted_power_net_import_DE_avg',
+  'latest_forecasted_power_net_import_SE-SE4_avg',
+  'latest_forecasted_production_wind_avg'
+]
+
+target : [
+  'carbon_intensity_avg'
+]
+
+path_train : '../data/DK-DK2.csv'
+path_test : '../data/DK-DK2.csv'
