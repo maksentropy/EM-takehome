@@ -16,4 +16,24 @@ Right now the class cointains 3 methods:
 
 `predictions.py` scipt trains the model and retunrs predictions. 
 
-For machine learning model part I assumed that only variables with prefix `latest_forecasted_*` are available when forecast for carbon intensity is made for future. 
+For machine learning model part I assumed that only variables with prefix `latest_forecasted_*` are available when forecast for carbon intensity is made for future. This is how the distribution of missing values looks like.
+
+#   Column                                         Non-Null Count  Dtype  
+---  ------                                         --------------  -----  
+ 0   latest_forecasted_dewpoint_avg                 25235 non-null  float64
+ 1   latest_forecasted_precipitation_avg            24901 non-null  float64
+ 2   latest_forecasted_solar_avg                    29566 non-null  float64
+ 3   latest_forecasted_temperature_avg              25174 non-null  float64
+ 4   latest_forecasted_wind_x_avg                   29579 non-null  float64
+ 5   latest_forecasted_wind_y_avg                   29579 non-null  float64
+ 6   latest_forecasted_price_avg                    41734 non-null  float64
+ 7   latest_forecasted_production_avg               41205 non-null  float64
+ 8   latest_forecasted_consumption_avg              41733 non-null  float64
+ 9   latest_forecasted_power_net_import_DE_avg      41445 non-null  float64
+ 10  latest_forecasted_power_net_import_DK-DK1_avg  41325 non-null  float64
+ 11  latest_forecasted_power_net_import_SE_avg      0 non-null      float64
+ 12  latest_forecasted_power_net_import_SE-SE4_avg  41770 non-null  float64
+ 13  latest_forecasted_production_solar_avg         41301 non-null  float64
+ 14  latest_forecasted_production_wind_avg          41301 non-null  float64
+
+The column `latest_forecasted_power_net_import_SE_avg` can be since there are no values at all.
