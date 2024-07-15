@@ -38,4 +38,26 @@ Column                                         Non-Null Count  Dtype
  14  latest_forecasted_production_wind_avg          41301 non-null  float64
 ```
 
-The column `latest_forecasted_power_net_import_SE_avg` can be since there are no values at all.
+The column `latest_forecasted_power_net_import_SE_avg` can be since there are no values at all. Since there are observations with approximately half of missing values, filling them with median value might be tricky. On the other hand, there are approximately 25000 observations if we drop missing values. 
+
+To compare models, the dataset is split into training and test sets with proportions 80/20 % of the total dataset size. Baseline model is predicting mean of training set. Metric - mean absolute error. 
+
+Here is results of training several models:
+| Model | MAE |
+| --- | --- |
+| Baseline (mean) | 108.0245 |
+| Ridge regression | 46.9479 |
+| Lasso regression | 48.4254 |
+| Gradient boosting | 49.3276 |
+
+However, sklearn's implementation of gradient boosting has property of showing feature importance, which puts most attention to `latest_forecasted_production_avg`, `latest_forecasted_power_net_import_DE_avg`, `latest_forecasted_power_net_import_SE-SE4_avg`,`latest_forecasted_production_wind_avg`. Selecting these features and training the gradient boosting only with these features yields the following results. 
+
+| Model | MAE |
+| --- | --- |
+| Baseline (mean) | 108.0245 |
+| Ridge regression | 46.9479 |
+| Lasso regression | 48.4254 |
+| Gradient boosting | 49.3276 |
+| Gradient boosting (selected features) | 41.16141 |
+
+Gradient boosting with selected features is used in the ML pipeline in this repo. 
