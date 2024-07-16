@@ -1,6 +1,6 @@
 # EM-takehome
 
-My idea was to design a cascade of a ML system, which is maintainable and can be extended in future if needed. There are two main parts in the system:
+My idea was to design a cascade of a ML system, which is maintainable and can be extended in future if needed. Python version is `3.12`. There are two main parts in the system:
 
 Script `model.py` contains a class wrapper for a ML model. Right now it relies on sklearn objects and the functions resemble functionality of sklearn objects, which might seem redundant. The idea was to write this class to hide all details of using other ML frameworks (or even own implementations) if it's needed at some point in the future.
 
@@ -40,9 +40,9 @@ Column                                         Non-Null Count  Dtype
  14  latest_forecasted_production_wind_avg          41301 non-null  float64
 ```
 
-The column `latest_forecasted_power_net_import_SE_avg` can be since there are no values at all. Since there are observations with approximately half of missing values, filling them with median value might be tricky. On the other hand, there are approximately 25000 observations if we drop missing values. 
+The column `latest_forecasted_power_net_import_SE_avg` can be since there are no values at all. Since there are observations with approximately half of missing values, filling them with median value might be tricky. On the other hand, there are approximately 25000 observations if we drop missing values. This should be enough for trainig a decent ML model. 
 
-To compare models, the dataset is split into training and test sets with proportions 80/20 % of the total dataset size. Baseline model is predicting mean of training set. Metric - mean absolute error. 
+To compare models, the dataset is split into training and test sets with proportions 80/20 % of the total dataset size. Baseline model is predicting mean of training set. As a metric to compare accuracy and selecting the best model mean absolute error has been selected. 
 
 Here is results of training several models:
 | Model | MAE |
